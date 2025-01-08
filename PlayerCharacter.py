@@ -1,16 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import Races
 
-version = "0.0.1"
-version_notes = """
-8 January 2025
-Added:
-* Dwarf
-* Elf
-"""
-
-'''
 class CharacterSheet:
     def __init__(self, master):
         self.master = master
@@ -36,14 +26,14 @@ class PlayerCharacter:
         self.experience
         self.race
         self.alignment
+
         self.move
         self.vision
-        
+
         self.strength
         self.dexterity
         self.constitution
         self.intelligence
-
         self.wisdom
         self.charisma
 
@@ -61,7 +51,7 @@ class PlayerCharacter:
         self.intelligenceMax
         self.wisdomMax
         self.charismaMax
-        
+
 class Race:
     def __init__(self):
         self.name
@@ -75,16 +65,16 @@ class Race:
         self.intelligenceAdjustment
         self.wisdomAdjustment
         self.charismaAdjustment
-        
+
         self.strengthMax
         self.dexterityMax
         self.constitutionMax
         self.intelligenceMax
         self.wisdomMax
         self.charismaMax
-        
+
         self.restrictedClasses
-        
+
         #put proficiencies function in
         #also put other bonuses here
 
@@ -135,4 +125,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = CharacterSheet(root)
     root.mainloop()
-'''
