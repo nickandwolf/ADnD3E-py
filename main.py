@@ -6,8 +6,10 @@ version = "0.0.1"
 version_notes = """
 8 January 2025
 Added:
-* Dwarf
-* Elf
+* All base races
+TODO:
+* Add human races
+
 """
 
 '''
