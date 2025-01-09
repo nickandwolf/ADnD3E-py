@@ -2,6 +2,18 @@ version = 1
 requires-python = ">=3.11"
 
 [[package]]
+name = "pc"
+version = "0.0.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a1/67/2261b2ce4203c7777a8ab30d1a88c52cff236a4d5c67dbc30150aac303dd/pc-0.0.3.tar.gz", hash = "sha256:13c6a7e0e5b253f26191f89937cdb81ff8fff4d95c6af122bd5bfe8d7e010063", size = 5722 }
+
+[[package]]
 name = "python-template"
 version = "0.1.0"
 source = { virtual = "." }
+dependencies = [
+    { name = "pc" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pc", specifier = ">=0.0.3" }]

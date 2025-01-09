@@ -1,5 +1,6 @@
-import MiscMod, Skills
 from copy import deepcopy as copy
+from . import Skills
+from . import MiscMod
 
 class Race:
     def __init__(self, name, size, move, vision, skillProf, miscMods=[], strAdj=0, dexAdj=0, conAdj=0, intAdj=0, wisAdj=0, chaAdj=0, strMax=18, dexMax=18, conMax=18, intMax=18, wisMax=18, chaMax=18, restrictedClasses=[], desc = ""):
@@ -24,7 +25,7 @@ class Race:
 
         self.restrictedClasses = restrictedClasses
 
-        self.skillProficiencies = skillProf
+        self.skillProf = skillProf
         
         self.miscMods = miscMods
 
@@ -97,7 +98,7 @@ HighElf.intAdj = 1
 HighElf.strAdj = -1
 HighElf.strMax = 17
 HighElf.intMax = 19
-HighElf.skillProficiencies[1] = Skills.Skill("Language(High Elvish)", "Intelligence", Skills.languageDesc)
+HighElf.skillProf[1] = Skills.Skill("Language(High Elvish)", "Intelligence", Skills.languageDesc)
 HighElf.description += "\n\nHigh Elves are the rarest and most powerful of their kind. They maintain their strong ties with the Fae with isolationist practices and are extremely rare outside of the Dolmenwood or their hidden elven enclaves."
 
 #sylvan/wood elf
@@ -110,8 +111,8 @@ WoodElf.description += "\n\nWood Elves are those elves who abandoned the Fae in 
 Gnome = copy(Dwarf)
 Gnome.name = "Gnome"
 Gnome.size = "Small"
-Gnome.skillProficiencies[1] = Skills.Skill("Language(Ave Vox)", "Intelligence", Skills.languageDesc, True)
-Gnome.skillProficiencies.append(Skills.Skill("Language(Burrowing Mammals)", "Intelligence", "Gnomes may communicate with burrowing mammals at a rudimentary level.", True))
+Gnome.skillProf[1] = Skills.Skill("Language(Ave Vox)", "Intelligence", Skills.languageDesc, True)
+Gnome.skillProf.append(Skills.Skill("Language(Burrowing Mammals)", "Intelligence", "Gnomes may communicate with burrowing mammals at a rudimentary level.", True))
 Gnome.miscMods = Gnome.miscMods[2:]
 del Gnome.miscMods[8]
 Gnome.miscMods.append(MiscMod.MiscModifier("Kobold Hatred", "race attack","Kobold", 1))
@@ -136,9 +137,9 @@ HalfElf = Race("Half-Elf", "Mediun", 60, "Twilight Vision",
        MiscMod.MiscModifier("Passive Secret Door Perception", "skill", "Passive Perception(Secret Doors)"),
        MiscMod.MiscModifier("Passive Concealed Door Perception", "skill", "Passive Perception(Concealed Doors)"),
        
-       MiscMod.MiscModifier("Ability Check Bonus", "ability modifier", "", 1),
-       MiscMod.MiscModifier("Ability Check Bonus", "ability modifier", "", 1),
-       MiscMod.MiscModifier("Ability Check Bonus", "ability modifier", "", 1)])
+       MiscMod.MiscModifier("Ability Check Bonus", "check modifier", "", 1),
+       MiscMod.MiscModifier("Ability Check Bonus", "check modifier", "", 1),
+       MiscMod.MiscModifier("Ability Check Bonus", "check modifier", "", 1)])
 HalfElf.description = "Half-elves are usually much like their elven parent in appearance. They are handsome folk, with the good features of each of their races. They mingle freely with either race, being only slightly taller than the average elf (5½’ on average) and weighing about 150 pounds. They typically live about 250 years. They do not have all the abilities of the elf and do not have the natural aptitude of humankind.\n\nIn general, a half-elf has the curiosity, inventiveness, and ambition of his human ancestors, and the refined senses, love of nature and artistic tastes of his elven ancestors. Half-elves do not form communities among themselves; rather, they can be found living in both elven and human communities. The reactions of humans and elves to half-elves range from intrigued fascination to outright bigotry."
 
 
@@ -148,7 +149,7 @@ Halfling = Race("Hairfoot Halfling", "Small", 45, "Twilight Vision",
                 
                 [MiscMod.MiscModifier("Sling Proficiency", "weapon prof", "Sling"),
                  MiscMod.MiscModifier("Dart Proficiency", "weapon prof", "Dart"),
-                 MiscMod.MiscModifier("Throw Mastery", "weapon attack", "Throw", 1"),
+                 MiscMod.MiscModifier("Throw Mastery", "weapon attack", "Throw", 1),
                  MiscMod.MiscModifier("Sling Mastery", "weapon attack", "Sling", 1),
 
                  MiscMod.MiscModifier("Magic Resistance", "saving throw", "Magic", 4),
@@ -162,8 +163,8 @@ Halfling = Race("Hairfoot Halfling", "Small", 45, "Twilight Vision",
 Halfling.description = "Halflings are uncommon, and largely found in segregated agricultural communities. Most halflings known to the Empire live on the Grain Islands to the east of Archontea, where their agricultural prowess provides important food supplies to Archontos itself. These halfling communities are largely self-regulating, although they are under the loose supervision of the imperial strategos and his legion. Local halfling lore does not fully account for their existence on the Grain Islands, being content to distantly recall the Great Voyage on the Big Ships.\n\nAlthough most halflings are content with their rural lives, a few bold sorts attach themselves to the staff of the Strategos and end up traveling ‘across the water’ to Archontos. These halflings are seen as exotic and rustic, and they tend to suffer some general paternalistic patronizing from Imperial citizens.\n\nHalflings are sturdy and industrious, generally quiet and peaceful. Overall, they prefer the comforts of home to dangerous adventuring. They enjoy good living, rough humor, and homespun stories. In fact, they can be a trifle boring at times. Halflings are not forward, but they are observant and conversational if in friendly company.\n\nHalflings see wealth only as a means of gaining creature comforts, which they love. Though they are not overly brave or ambitious, they are generally honest and hard-working when there is need."
 
 
-StoutHalflings = copy(Halfling)
-StoutHalflings.name = "Stout Halfling"
+StoutHalfling = copy(Halfling)
+StoutHalfling.name = "Stout Halfling"
 StoutHalfling.vision = "Darkvision 60'"
 StoutHalfling.description += "This kind of halfling is a bit smaller and stockier than the typical (hairfoot) halfling. It is commonly believed that stout halflings have traces of dwarven blood within their veins.  When forced into battle, they tend to wear more armor than their hairfoot brethren and employ morningstars in addition to the usual halflingish arms."
 
@@ -175,14 +176,9 @@ HalfOrc = Race("Half-Orc", "Medium", 60, "Darkvision 60'",
                [Skills.Skill("Language(Archontean)", "Intelligence", Skills.languageDesc, True),
                 Skills.Skill("Language(Orcish)", "Intelligence", Skills.languageDesc, True)],
 
-               [MiscMod.MiscModifier("Savage Attack", "weapon attack", "Savage", 1),
-                MiscMod.MiscModifier("Savage Defense", "armor class", "Savage", 1),
-                MiscMod.MiscModifier("Savage Attack", "weapon attack", "Savage", 1),
-                MiscMod.MiscModifier("Savage Defense", "armor class", "Savage", 1)],
-               
-                MiscMod.MiscModifier("Ability Check Bonus", "ability modifier", "", 1),
-                MiscMod.MiscModifier("Ability Check Bonus", "ability modifier", "", 1),
-                MiscMod.MiscModifier("Ability Check Bonus", "ability modifier", "", 1)],
+               [MiscMod.MiscModifier("Ability Check Bonus", "check modifier", "", 1),
+                MiscMod.MiscModifier("Ability Check Bonus", "check modifier", "", 1),
+                MiscMod.MiscModifier("Ability Check Bonus", "check modifier", "", 1)],
               
               strAdj = 1, conAdj = 1, chaAdj = -2, strMax = 19, conMax = 19, chaMax = 16)
 HalfOrc.description = "Half-orcs are boors. They are rude, crude, crass, and generally obnoxious. Because most are cowardly they tend to be bullies and cruel to the weak, but they will quickly knuckle under to the stronger. This does not mean that all half-orcs are horrid, only most of them.  It neither means that they are necessarily stupid nor incapable.  They will always seek to gain the upper hand and dominate those around them so as to be able to exercise their natural tendencies; half-orcs are greedy too. They can, of course, favor their human parent more than their orcish one.\n\nOrcs are fecund and create many crossbreeds, most of the offspring of such being typically orcish. However, some one-tenth of orc-human mongrels are sufficiently non-orcish to pass for human. It is assumed that player characters that are of the half-orc race are within the superior 10%, though there is something disquieting about their appearance that reveals the cruel nature of their orcish heritage.\n\nHalf-orcs tend to be slightly taller than humans, longer of limb and with broader shoulders. Their facial features have an orcish caste to them, with thin-slit eyes and nostrils, broad, jutting jaw lines and slightly pointed ears being common. Their canine teeth are somewhat larger than those of humans and their coloration tends to be ruddier than usual for men of their lands."
@@ -190,14 +186,14 @@ HalfOrc.description = "Half-orcs are boors. They are rude, crude, crass, and gen
 Human = Race("Human", "Medium", 60, "",
             [Skills.Skill("Language(Archontean)", "Intelligence", Skills.languageDesc, True),
              Skills.Skill("Extra Skill", "", ""),
-             Skills.Skill("Extra Skill", "", )]
+             Skills.Skill("Extra Skill", "", "")],
 
-            [MiscMod.MiscModifier("Strength Check Bonus", "ability modifier", "Strength", 1),
-             MiscMod.MiscModifier("Dexterity Check Bonus", "ability modifier", "Dexterity", 1),
-             MiscMod.MiscModifier("Constitution Check Bonus", "ability modifier", "Constitution", 1),
-             MiscMod.MiscModifier("Intelligence Check Bonus", "ability modifier", "Intelligence", 1),
-             MiscMod.MiscModifier("Wisdom Check Bonus", "ability modifier", "Wisdom", 1),
-             MiscMod.MiscModifier("Charisma Check Bonus", "ability modifier", "Charisma", 1)])
+            [MiscMod.MiscModifier("Strength Check Bonus", "check modifier", "Strength", 1),
+             MiscMod.MiscModifier("Dexterity Check Bonus", "check modifier", "Dexterity", 1),
+             MiscMod.MiscModifier("Constitution Check Bonus", "check modifier", "Constitution", 1),
+             MiscMod.MiscModifier("Intelligence Check Bonus", "check modifier", "Intelligence", 1),
+             MiscMod.MiscModifier("Wisdom Check Bonus", "check modifier", "Wisdom", 1),
+             MiscMod.MiscModifier("Charisma Check Bonus", "check modifier", "Charisma", 1)])
 Human.description = "Humans are the most diverse of all the races, with skin and hair varying in color from black to the lightest shades.  Their men may or may not wear beards and their eyes can be of various hues, tending towards shades of blue or brown."
 #humans have races too but that will have to wait.
 

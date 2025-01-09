@@ -1,18 +1,20 @@
 #a class to support misc bonuses and process them
 
 class MiscModifier:
-    def __init__(self, name, type, trigger, modifier=0):
+    def __init__(self, name, type, trigger, modifier=0, desc=""):
         self.name = name
         self.type = type
         self.trigger = trigger
         self.modifier = modifier
+        self.description = desc
 
 '''
 #ability modifier is only to skill checks and saving throws
 modTypes = 
         ["weapon attack", "weapon damage", "race attack", "race damage",
-        "race AC", "saving throw", "skill", "weapon prof", "special ability",
-        "ability modifier"]
+        "race AC", "saving throw", "skill", "weapon prof", "armor prof",
+        "special ability", "check modifier", "special attack",
+        "special damage", "special attack/damage"]
 '''
 
 class Language:
@@ -22,7 +24,7 @@ class Language:
         self.description = description
 
 class Alphabet:
-    def __init__(self, name, description=[])
+    def __init__(self, name, description=[]):
         self.name = name
         self.description = description
 
@@ -55,9 +57,9 @@ Wiskin = Language("Wiskin", WiskinRunic, "The native language of the Wiskinga, t
                   
 Khumus = Language("Khumus", KhumicAlpha, "The native language of the Khumus, the horse riding natives of the Khumus Khorates.")
 
-Woldish = Language("Woldish", NeoMithricAlpha,"The common language of those who reside in the Dolmenwood.")
+Woldish = Language("Woldish", NeoMithricAlpha, "The common language of those who reside in the Dolmenwood.")
                   
-OldWoldish = Language("Old Woldish" MithricAlpha, "A dead language of the humans who came to Dolmenwood. A mixture of Mithric and Thorcin.")
+OldWoldish = Language("Old Woldish", MithricAlpha, "A dead language of the humans who came to Dolmenwood. A mixture of Mithric and Thorcin.")
                   
 Liturgic = Language("Liturgic", MithricAlpha, "The Pluritine Church's language. An archaic version of Archontean.")
 
@@ -67,7 +69,7 @@ HighElvish = Language("High Elvish", SylvanAlpha, "The language used by the immo
                   
 Sylvan = Language("Sylvan", SylvanRunic, "The language of the Fey and Immortals of Dolmenwood.")
                   
-Irthuin Elvish = Language("Irthuin Elvish", SylvanAlpha, "The language used by Elves in Irthuin.")
+IrthuinElvish = Language("Irthuin Elvish", SylvanAlpha, "The language used by Elves in Irthuin.")
 
 Dwarvish = Language("Dwarvish", DwarvishRunic, "The language of the Dwarves.")
                   
