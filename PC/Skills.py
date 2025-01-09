@@ -47,3 +47,8 @@ SkillList.append(Skill("Persuasion", "Charisma", "When you attempt to influence 
 #performance too
 performanceDesc = "audience through your art. When proficiency is taken in the Performance skill the character must choose a type of performance art in which they are proficient: acting, buffoonery, dancing, stringed instruments, percussion instruments, woodwind instruments, singing, etc.  A character who wishes to master more than one mode of Performance must gain proficiency in other Performance skills separately.\n\nUnskilled Performance checks are typically made without a musical instrument, as most musical instruments require some degree of proficiency to use with any degree of aptitude."
 
+def GetSkill(skillz):
+    for x in SkillList:
+        if x.name == skillz:
+            return x
+    return None

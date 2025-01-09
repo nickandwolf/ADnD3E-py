@@ -4,7 +4,7 @@ from PC import Races
 from PC import Classes
 from PC import Skills
 from PC import MiscMod
-from PC import PlayerCharacter
+#from PC import PlayerCharacter
 
 version = "0.0.1"
 version_notes = """

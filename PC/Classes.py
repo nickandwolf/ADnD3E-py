@@ -1,4 +1,6 @@
 from . import Skills
+from . import MiscMod
+
 
 ExperienceLevels = {1:0, 2:2500, 3:5000, 4:10000, 5:20000,
                     6:37500, 7:75000, 8:150000, 9:250000, 10:500000,
@@ -9,9 +11,9 @@ class Class:
     def __init__(self):
         pass
 
-    def LevelCheck(self):
+    def LevelCheck(self,xp):
         for level, xpReq in sorted(ExperienceLevels.items(), reverse=True):
-            if self.xp >= xpReq:
+            if xp >= xpReq:
                 return level
 
 class Assassin(Class):
@@ -27,9 +29,9 @@ class Assassin(Class):
         
         self.savingThrowProf = ["Dexterity", "Intelligence"]
         
-        self.skillProf = [Skills.GetSkill("Athletics"), Skills.GetSkill("Disable Device"), Skills.GetSkill("Disguise"),
-                          Skills.GetSkill("Poison"), Skills.GetSkill("Stealth"),
-                          Skills.Skill("Extra Skill", "", ""), Skills.Skill("Extra Skill", "", "")]
+        self.skillProf = [Skills.GetSkill("Athletics")]#, Skills.GetSkill("Disable Device"), Skills.GetSkill("Disguise"),
+                          #Skills.GetSkill("Poison"), Skills.GetSkill("Stealth"),
+                          #Skills.Skill("Extra Skill", "", ""), Skills.Skill("Extra Skill", "", "")]
         
         self.miscMod = [MiscMod.MiscModifier("Assassin Armor Proficiency", "armor prof", "Light Armor"),
                         MiscMod.MiscModifier("Assassin Shield Proficiency", "armor prof", "Small Shields"),
@@ -47,5 +49,5 @@ class Assassin(Class):
             return
         
 ass = Assassin()
-ass.LevelUp()
+#ass.LevelUp()
 print(ass.skillProf[0].name)
