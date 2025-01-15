@@ -4,7 +4,12 @@ from PC import Races
 from PC import Classes
 from PC import Skills
 from PC import MiscMod
+from PC import CharacterWizard
 #from PC import PlayerCharacter
+
+root = tk.Tk()
+app = CharacterWizard.CharacterWizard(root)
+root.mainloop()
 
 version = "0.0.1"
 version_notes = """

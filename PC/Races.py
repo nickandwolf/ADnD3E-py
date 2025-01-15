@@ -172,7 +172,7 @@ TallfellowHalfling = copy(Halfling)
 TallfellowHalfling.name = "Tallfellow Halfling"
 TallfellowHalfling.description += "A taller, slimmer halfling, with fairer skin and hair. Tallfellows are very rare. Like stouts they tend to use heavier armor than hairfoots. Tallfellows are able to ride ponies and tend to use spears in addition to the to the usual halflingish arms.  Tallfellows share the racial abilities of hairfoots, though they often speak Elven, in addition to Common and Halfling, and are friendly with elvenkind.  It is rumored that tallfellows have a bit of elven blood in them."
 
-HalfOrc = Race("Half-Orc", "Medium", 60, "Darkvision 60'",
+HalfOrc = Race("Half-Orc (Borean)", "Medium", 60, "Darkvision 60'",
                [Skills.Skill("Language(Archontean)", "Intelligence", Skills.languageDesc, True),
                 Skills.Skill("Language(Orcish)", "Intelligence", Skills.languageDesc, True)],
 
@@ -195,7 +195,20 @@ Human = Race("Human", "Medium", 60, "",
              MiscMod.MiscModifier("Wisdom Check Bonus", "check modifier", "Wisdom", 1),
              MiscMod.MiscModifier("Charisma Check Bonus", "check modifier", "Charisma", 1)])
 Human.description = "Humans are the most diverse of all the races, with skin and hair varying in color from black to the lightest shades.  Their men may or may not wear beards and their eyes can be of various hues, tending towards shades of blue or brown."
-#humans have races too but that will have to wait.
+ArchonteanHuman = copy(Human)
+ArchonteanHuman.name = "Human (Archontean)"
+
+KhumusHuman = copy(Human)
+KhumusHuman.name = "Human (Khumus)"
+
+ThorcingaHuman = copy(Human)
+ThorcingaHuman.name = "Human (Thorcinga)"
+
+WiskingaHuman = copy(Human)
+WiskingaHuman.name = "Human (Wiskinga)"
+
+OstraliosHuman = copy(Human)
+OstraliosHuman.name = "Human (Ostralios)"
 
 RaceList.append(Dwarf)
 RaceList.append(Elf)
@@ -207,3 +220,8 @@ RaceList.append(Halfling)
 RaceList.append(StoutHalfling)
 RaceList.append(TallfellowHalfling)
 RaceList.append(HalfOrc)
+RaceList.append(ArchonteanHuman)
+RaceList.append(KhumusHuman)
+RaceList.append(ThorcingaHuman)
+RaceList.append(WiskingaHuman)
+RaceList.append(OstraliosHuman)
