@@ -50,4 +50,3 @@ class Assassin(Class):
         
 ass = Assassin()
 #ass.LevelUp()
-print(ass.skillProf[0].name)
